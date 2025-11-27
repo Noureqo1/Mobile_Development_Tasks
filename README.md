@@ -93,11 +93,11 @@ The app includes 6 sample news articles across different categories for demonstr
 ### Product Grid & Cards
 | Product Grid | Product Card Details | Error Handling |
 |--------------|---------------------|----------------|
-| <img src="../output/Lab4/Screenshot_1764266934.png" width="200" /> | <img src="../output/Lab4/Screenshot_1764266942.png" width="200" /> | <img src="../output/Lab4/Screenshot_1764266971.png" width="200" /> |
+| <img src="/output/Lab4/Screenshot_1764266934.png" width="200" /> | <img src="/output/Lab4/Screenshot_1764266942.png" width="200" /> | <img src="/output/Lab4/Screenshot_1764266971.png" width="200" /> |
 | Main product display | Individual product cards | Image error fallback |
 
 ### App Interface
-| Full Screen View | Alternative View |
-|------------------|-------------------|
-| <img src="../output/Lab4/Screenshot_1764266982.png" width="200" /> | |
-| Complete app layout | |
+| Full Screen View |
+|------------------|
+| <img src="/output/Lab4/Screenshot_1764266982.png" width="200" /> | 
+| Complete app layout | 
