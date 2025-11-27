@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../models/product.dart';
+import '../providers/cart_provider.dart';
 
 class ProductCard extends StatelessWidget {
-  final String imageUrl;
-  final String productName;
-  final double price;
-  final String description;
+  final Product product;
+  final VoidCallback? onAddToCart;
 
   const ProductCard({
     super.key,
-    required this.imageUrl,
-    required this.productName,
-    required this.price,
-    required this.description,
+    required this.product,
+    this.onAddToCart,
   });
 
   @override
@@ -31,13 +30,13 @@ class ProductCard extends StatelessWidget {
               topRight: Radius.circular(12),
             ),
             child: Image.network(
-              imageUrl,
-              height: 200,
+              product.imageUrl,
+              height: 150,
               width: double.infinity,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
                 return Container(
-                  height: 200,
+                  height: 150,
                   color: Colors.grey[300],
                   child: const Center(
                     child: Icon(Icons.image_not_supported),
@@ -47,43 +46,69 @@ class ProductCard extends StatelessWidget {
             ),
           ),
           // Product Details
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Product Name
-                Text(
-                  productName,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Product Name
+                  Text(
+                    product.name,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 8),
-                // Description
-                Text(
-                  description,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey[600],
+                  const SizedBox(height: 4),
+                  // Description
+                  Text(
+                    product.description,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.grey[600],
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 12),
-                // Price
-                Text(
-                  '\$${price.toStringAsFixed(2)}',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green,
+                  const Spacer(),
+                  // Price and Add Button
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '\$${product.price.toStringAsFixed(2)}',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green,
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          context.read<CartProvider>().addItem(product);
+                          onAddToCart?.call();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('${product.name} added to cart'),
+                              duration: const Duration(milliseconds: 800),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                        ),
+                        child: const Text('Add'),
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
