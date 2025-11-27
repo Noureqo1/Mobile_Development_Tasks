@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/preferences_service.dart';
+import 'backup_restore_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -124,6 +125,38 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     subtitle: const Text('Receive updates about new articles'),
                     value: _notificationsEnabled,
                     onChanged: _updateNotifications,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // Backup & Restore section
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Data Management',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+                const SizedBox(height: 16),
+                Card(
+                  child: ListTile(
+                    leading: Icon(Icons.backup_outlined, color: Colors.blue[700]),
+                    title: const Text('Backup & Restore'),
+                    subtitle: const Text('Export or import your data'),
+                    trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const BackupRestoreScreen(),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
