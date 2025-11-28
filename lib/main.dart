@@ -67,6 +67,18 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         children: _screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        selectedItemColor: Theme.of(context).colorScheme.primary,
+        unselectedItemColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+        selectedIconTheme: IconThemeData(
+          color: Theme.of(context).colorScheme.primary,
+          size: 24,
+        ),
+        unselectedIconTheme: IconThemeData(
+          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+          size: 24,
+        ),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
