@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/favorites_screen.dart';
 import 'screens/settings_screen.dart';
+import 'screens/registration_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -49,6 +50,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     const HomeScreen(),
     const FavoritesScreen(),
     const SettingsScreen(),
+    const RegistrationScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -65,6 +67,18 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         children: _screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        selectedItemColor: Theme.of(context).colorScheme.primary,
+        unselectedItemColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+        selectedIconTheme: IconThemeData(
+          color: Theme.of(context).colorScheme.primary,
+          size: 24,
+        ),
+        unselectedIconTheme: IconThemeData(
+          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+          size: 24,
+        ),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -77,6 +91,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_add),
+            label: 'Register',
           ),
         ],
         currentIndex: _selectedIndex,
