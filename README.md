@@ -87,3 +87,17 @@ lib/
 
 ## Sample Data
 The app includes 6 sample news articles across different categories for demonstration purposes.
+
+## 🖼️ Screens
+
+### Product Grid & Cards
+| Product Grid | Product Card Details | Error Handling |
+|--------------|---------------------|----------------|
+| <img src="/output/Lab4/Screenshot_1764266934.png" width="200" /> | <img src="/output/Lab4/Screenshot_1764266942.png" width="200" /> | <img src="/output/Lab4/Screenshot_1764266971.png" width="200" /> |
+| News Screen | Filter Display | Favourites Screen |
+
+### App Interface
+| Full Screen View |
+|------------------|
+| <img src="/output/Lab4/Screenshot_1764266982.png" width="200" /> | 
+| Settings Screen | 
